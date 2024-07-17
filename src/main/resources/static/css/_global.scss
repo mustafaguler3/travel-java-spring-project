@@ -1,0 +1,180 @@
+// utility class
+html {
+    font-size: 1rem;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: $theme-color-white;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.theme-bg-primary {
+    background-color: $theme-primary-color;
+}
+
+.theme-bg-secondary {
+    background-color: $theme-secondary-color;
+}
+
+.theme-bg-accent-one {
+    background-color: $theme-accent-one;
+}
+
+.theme-bg-accent-two {
+    background-color: $theme-accent-two;
+}
+
+.theme-bg-white {
+    background-color: $theme-color-white;
+}
+
+.theme-text-white {
+    color: $theme-color-white;
+}
+
+.theme-text-primary {
+    color: $theme-primary-color;
+}
+
+.theme-text-secondary {
+    color: $theme-secondary-color;
+}
+
+.theme-text-accent-one {
+    color: $theme-accent-one;
+}
+
+.theme-text-accent-two {
+    color: $theme-accent-two;
+}
+
+.theme-text-accent-three {
+    color: $theme-accent-three;
+}
+
+.theme-text-accent-four {
+    color: $theme-accent-four;
+}
+
+.text-green {
+    color: $color-green;
+}
+
+.theme-box-shadow {
+    box-shadow: $theme-box-shadow;
+}
+
+.theme-text-shadow {
+    text-shadow: $theme-box-shadow;
+}
+
+.theme-border-radius {
+    border-radius: $theme-border-radius;
+}
+
+.min-w-150 {
+    min-width: 150px;
+}
+
+.btn-shop {
+    background-color: $theme-color-white;
+    color: $theme-primary-color;
+    border-radius: $theme-border-radius;
+    min-width: 150px;
+
+    &:hover {
+        background-color: $theme-primary-color;
+        color: $theme-color-white;
+    }
+}
+
+.link-btn {
+    background-color: $theme-accent-four;
+    color: $theme-primary-color;
+    border-radius: $theme-border-radius;
+    min-width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: $theme-primary-color;
+        color: $theme-color-white;
+    }
+}
+
+/* pulseBig */
+@keyframes pulseBig {
+    0% {
+        box-shadow: 0 0 0 0 $theme-color-white;
+    }
+
+    50% {
+        box-shadow: 0 0 0 20px rgba(1, 93, 199, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(1, 93, 199, 0);
+    }
+}
+
+// button secondary
+.recomended-btn {
+    background-color: $theme-accent-four;
+    color: $theme-accent-one;
+    border-radius: $theme-border-radius;
+    border: none;
+
+    &:hover {
+        background-color: $theme-primary-color;
+    }
+}
+
+// button outline
+.theme-btn-outline {
+    background-color: $theme-color-white;
+    color: $theme-primary-color;
+    border-radius: $theme-border-radius;
+    border: 1px solid $theme-primary-color;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px;
+    font-size: $font-small;
+
+    &:hover {
+        background-color: $theme-primary-color;
+        color: $theme-color-white;
+    }
+}
+
+// back to top
+.scrollToTop {
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: $theme-secondary-color;
+    border-radius: 5px;
+    color: $theme-color-white;
+    line-height: 45px;
+    font-size: 20px;
+    text-align: center;
+    z-index: 9;
+    cursor: pointer;
+    transition: all 1s;
+    transform: translateY(100%);
+
+    &.active {
+        bottom: 30px;
+        transform: translateY(0%);
+    }
+}

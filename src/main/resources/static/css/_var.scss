@@ -1,0 +1,28 @@
+/*-- color style --*/
+$theme-primary-color: #0393D2;
+$theme-secondary-color: #000000;
+$theme-accent-one: #5D5D5D;
+$theme-accent-two: #9F9F9F;
+$theme-accent-three: #DDDDDD;
+$theme-accent-four: #EFFAFF;
+$theme-color-white: #ffffff;
+$theme-link-color: #008CFF;
+$color-green: #00A45D;
+$extra-color: #ffc107;
+$body-color: #e1e1e1;
+/*-- font style --*/
+$font-small: 0.8rem;
+$font-extra-small: 0.5rem;
+$font-medium: 0.875rem;
+$font-10: 0.625rem;
+$font-18: 1.125rem;
+
+/*-- theme style --*/
+$theme-box-shadow: 0px 3px 20px rgba($theme-secondary-color, .1);
+$theme-text-shadow: 0 0rem 0.8rem rgba($theme-accent-one, .15);
+$theme-border-radius: 50px;
+
+/*-- media query --*/
+$break-small: 575px;
+$break-medium: 767px;
+$break-large: 992px;

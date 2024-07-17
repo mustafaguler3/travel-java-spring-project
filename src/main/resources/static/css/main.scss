@@ -1,0 +1,795 @@
+@import 'vandors';
+@import 'var';
+@import 'reset';
+@import 'global';
+
+// header wraper css
+.head-wrapper {
+    display: block;
+    min-height: auto;
+
+    position: relative;
+    z-index: 2;
+
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        background: $theme-accent-one;
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+        display: none;
+    }
+
+}
+
+// header css
+.header {
+    box-shadow: $theme-box-shadow;
+}
+
+// menu css
+.page-menu {
+    li {
+        a {
+            color: $theme-accent-one;
+
+            &.mein-link {
+                padding: 1.5rem 1.5rem !important;
+
+                @media screen and (max-width:$break-large) {
+                    padding: 1rem 0 !important;
+                }
+            }
+
+            &:hover {
+                color: $theme-primary-color;
+            }
+        }
+
+
+
+        a.active {
+            color: $theme-primary-color;
+        }
+    }
+}
+
+
+.user {
+    i {
+        color: $theme-color-white;
+    }
+
+    &::after {
+        content: '';
+        display: none;
+    }
+}
+
+.sub-menu {
+    text-align: center;
+
+    li {
+        display: inline-block;
+
+        a {
+            padding: 0px 0.5rem;
+        }
+    }
+}
+
+// Search engine css
+.search-engine {
+    padding: 12rem 0 5rem 0;
+    background: url(../images/section/banner-image.png);
+    background-size: cover;
+    min-height: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    min-height: 820px;
+
+    @media screen and (max-width:$break-large) {
+        padding: 1rem 0;
+        background-attachment: fixed;
+    }
+
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        background: $theme-primary-color;
+        background: linear-gradient(180deg, rgba($theme-primary-color, 0.32816876750700286) 0%, rgba($theme-secondary-color, 0.76234243697479) 100%);
+    }
+}
+
+// search engine tab css
+.cust-tab {
+    li {
+
+        .nav-link,
+        .nav-link.active {
+            background-color: transparent;
+            border: 0px solid transparent;
+            color: $theme-color-white;
+            position: relative;
+
+            &:hover {
+                color: $theme-primary-color;
+            }
+        }
+
+        .nav-link.active {
+            &:after {
+                content: '';
+                width: 40px;
+                height: 1px;
+                display: block;
+                background-color: $theme-color-white;
+                margin: 0 auto;
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+    }
+}
+
+// flight search pill css
+.cust-pills {
+    .nav-item {
+        .nav-link {
+            color: $theme-color-white;
+            background-color: transparent;
+            border: none;
+            padding: 0.5rem 1rem 1.5rem 0rem;
+
+            @media screen and (max-width:$break-large) {
+                padding: 0.5rem 0.5rem 1.5rem 0rem;
+                font-size: $font-small;
+            }
+
+            &:hover {
+                border-color: transparent;
+                color: $theme-primary-color;
+            }
+        }
+
+        span {
+            border: 1px solid $theme-primary-color;
+        }
+
+        .active {
+            span {
+                background: $theme-primary-color !important;
+                border: 1px solid $theme-primary-color;
+                position: relative;
+
+
+            }
+        }
+    }
+
+}
+
+// search engine css
+.search-pan {
+    background: $theme-color-white;
+    padding: 0.8rem;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dropdown-toggle {
+
+        &::after {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+        }
+    }
+
+    .dropdown {
+        .dropdown-menu {
+            width: 100%;
+            padding: 0px 0.5rem;
+            border-radius: 0.5rem;
+
+            /*-- Droup down Traveller --*/
+            .drop-rest {
+                li {
+                    border-bottom: 1px solid $theme-accent-three;
+                    display: flex;
+                    padding: 1rem 0 1rem 0;
+
+                    span {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+
+                    .br {
+                        display: block;
+                        padding-top: 0px;
+                    }
+
+                    .btn {
+                        background-color: $theme-secondary-color;
+                        color: $theme-color-white;
+
+                        &:hover {
+                            background-color: $theme-secondary-color;
+                        }
+                    }
+                }
+            }
+
+            .plus-minus-input {
+                align-items: center;
+                width: 55%;
+
+                @media screen and (max-width:$break-large) {
+                    width: 30%;
+                }
+
+                @media screen and (max-width:$break-small) {
+                    width: 50%;
+                }
+
+                .input-group-button {
+                    button {
+                        background-color: $theme-color-white;
+                        border: 1px solid $theme-primary-color;
+                        color: $theme-primary-color;
+                        border-radius: 0.2rem;
+
+                        &:hover {
+                            background-color: $theme-primary-color;
+                            color: $theme-color-white;
+                        }
+                    }
+                }
+
+                .input-group-field {
+                    text-align: center;
+                    width: 40%;
+                    background: transparent;
+                    border: 0;
+                    margin-left: 0px !important;
+
+                    &::-webkit-inner-spin-button,
+                    &::-webkit-outer-spin-button {
+                        appearance: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .form-group {
+        position: relative;
+        border-right: 1px solid $theme-accent-three;
+        padding-left: 1rem;
+
+        @media screen and (max-width:$break-large) {
+            border-right: 0px solid $theme-accent-three;
+            border-bottom: 1px solid $theme-accent-two;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+
+    .input-group {
+        color: inherit;
+    }
+
+    .form-label {
+        display: block;
+        text-align: left;
+        font-size: $font-small;
+        font-weight: bold;
+        color: $theme-accent-one;
+    }
+
+    .form-control {
+        font-size: $font-small;
+        color: $theme-accent-two;
+        padding: 0;
+        border: 0px;
+        text-decoration: none;
+        border-radius: $theme-border-radius;
+        text-align: left;
+    }
+
+    .dropdown-toggle {
+
+        &::before {
+            color: $theme-accent-two;
+            right: 0.8rem;
+        }
+    }
+}
+
+// search button
+.btn-search {
+    background-color: $theme-primary-color;
+    min-height: 48px;
+    color: $theme-color-white;
+    max-width: 175px;
+    width: 100%;
+    border-radius: $theme-border-radius;
+    border: none;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &:before {
+        width: 100%;
+        height: 100%;
+        content: '';
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        background: $theme-secondary-color;
+        transition: all .2s;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $theme-color-white;
+
+        &:before {
+            top: 0;
+            left: 0;
+        }
+    }
+
+}
+
+// add sector button
+.sector-add {
+    font-size: $font-10;
+    background-color: $theme-accent-four;
+    border-radius: $theme-border-radius;
+    color: $theme-accent-one;
+    padding: 0 10px;
+}
+
+// toggle switches css
+
+.mode-switch {
+    position: relative;
+    font-size: $font-small;
+
+    input[type="checkbox"] {
+        cursor: pointer;
+        width: 50px;
+        height: 25px;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        margin: 0px;
+
+        &:checked+label.mode-switch-inner {
+            &:after {
+                content: attr(data-on);
+                left: 80px;
+                background: $theme-primary-color;
+            }
+
+            &:before {
+                content: attr(data-off);
+                right: auto;
+                left: 20px;
+            }
+        }
+    }
+
+    >label.mode-switch-inner {
+        margin: 0px;
+        width: 160px;
+        height: 30px;
+        background: $theme-color-white;
+        border-radius: $theme-border-radius;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.3s ease;
+        display: block;
+
+        &:before {
+            content: attr(data-on);
+            position: absolute;
+            top: 7px;
+            right: 20px;
+        }
+
+        &:after {
+            content: attr(data-off);
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            background: $theme-primary-color;
+            border-radius: $theme-border-radius;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+// subscription section css
+.subs-form {
+    position: relative;
+    min-height: 60px;
+    border-radius: $theme-border-radius;
+    background-color: $theme-color-white;
+    padding: 0.5rem;
+
+    input {
+        border-radius: $theme-border-radius;
+        font-size: $font-medium;
+    }
+
+    button {
+        border-radius: $theme-border-radius !important;
+        min-width: 150px;
+        font-size: $font-medium;
+    }
+}
+
+// testimonials css
+.testimonials {
+    position: relative;
+    background-color: rgba($theme-primary-color, 0.05);
+
+
+    .client-con {
+        text-align: justify;
+        background-color: $theme-color-white;
+        border-radius: $theme-border-radius;
+    }
+}
+
+// footer css
+.footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: $theme-color-white;
+
+    .fl-menu {
+        li {
+            list-style: none;
+            line-height: 34px;
+
+            a {
+                color: $theme-accent-two;
+                position: relative;
+                font-size: $font-medium;
+
+                &:hover {
+                    color: $theme-primary-color;
+
+                }
+            }
+        }
+    }
+
+    .footer-link {
+        li {
+            line-height: 2.5rem;
+            padding: 0 1rem;
+
+            a {
+                color: $theme-accent-two;
+                padding: 0 0 0.5rem 0;
+                font-size: $font-small;
+
+                &:hover {
+                    color: $theme-primary-color;
+                }
+            }
+        }
+    }
+
+    .social {
+
+        a,
+        .botom-link {
+            color: $theme-accent-one;
+
+            &:hover {
+                color: $theme-primary-color;
+            }
+        }
+    }
+}
+
+// recomended section css
+.recommended {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+
+
+    .card-wrap {
+        background-color: $theme-color-white;
+
+        .con-img-wrap {
+            position: relative;
+            border-radius: $theme-border-radius;
+            overflow: hidden;
+
+            img {
+                transition: all 0.2s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            .offer-tag {
+                background-color: $theme-primary-color;
+                border-radius: 0 0 50% 50%;
+                width: 50px;
+                height: 45px;
+                display: block;
+                position: absolute;
+                left: 50px;
+                top: 0px;
+                text-align: center;
+                line-height: normal;
+                color: $theme-secondary-color;
+                font-size: $font-small;
+            }
+
+            .wishlist-tag {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                z-index: 2;
+                display: flex;
+                width: 30px;
+                height: 30px;
+                background: $theme-color-white;
+                justify-content: center;
+                align-items: center;
+                line-height: normal;
+                border-radius: 100%;
+                color: $theme-secondary-color;
+                cursor: pointer;
+
+                &:hover {
+                    background: $theme-primary-color;
+                    color: $theme-color-white;
+                }
+            }
+        }
+
+        .con-wrap {
+
+            .rating-cover {
+                color: $theme-accent-two;
+
+                i {
+                    color: $extra-color;
+                }
+            }
+
+            .timing {
+                i {
+                    color: $theme-primary-color;
+                }
+
+                color: $theme-accent-two;
+
+            }
+        }
+
+    }
+}
+
+// product banner section css
+.special-offers {
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    // product card css
+    .box {
+        position: relative;
+        max-height: 450px;
+        height: 450px;
+        background-color: $theme-accent-one;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+        border-radius: $theme-border-radius;
+        padding-left: 3rem;
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: $theme-primary-color;
+            background: linear-gradient(180deg, rgba($theme-primary-color, 0.32816876750700286) 0%, rgba($theme-secondary-color, 0.76234243697479) 100%);
+            z-index: 0;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            z-index: 1;
+        }
+    }
+
+    .product01 {
+        background-image: url(../images/section/product-banner01.png);
+    }
+
+    .product02 {
+        background-image: url(../images/section/product-banner02.png);
+    }
+}
+
+// destinations section css
+.destinations {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+
+    .destination-pill {
+        .nav-item {
+            .nav-link.active {
+                background-color: $theme-accent-four;
+                color: $theme-secondary-color;
+                border-radius: $theme-border-radius;
+            }
+
+            .nav-link {
+                color: $theme-secondary-color;
+            }
+        }
+    }
+}
+
+/*-- flight experience css --*/
+.experience {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 3rem;
+
+
+    .wrap {
+        position: relative;
+        background-color: rgba($theme-primary-color, 0.1);
+        background-image: url(../images/section/bg-picture.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        padding: 6rem;
+        background-position: center center;
+        background-attachment: fixed;
+        border-radius: $theme-border-radius;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            background: rgba($theme-secondary-color, 0.6);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    }
+
+    .group {
+        display: flex;
+        min-height: 120px;
+        border-radius: $theme-border-radius;
+        justify-content: center;
+        background-position: center center;
+    }
+
+    .video-icon {
+        border-radius: 50%;
+        background-color: $theme-primary-color;
+        color: $theme-color-white;
+        line-height: 60px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulseBig infinite 4s linear;
+
+        &:hover {
+            background-color: $theme-secondary-color;
+
+            i {
+                color: $theme-primary-color;
+            }
+        }
+
+        i {
+            color: $theme-color-white;
+            font-size: 2rem;
+        }
+    }
+}
+
+// video ripple effect
+.action {
+    width: 3.75rem;
+    height: 3.75rem;
+    padding: 1.4rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    animation: pulseBig infinite 4s linear;
+
+    &:hover {
+        background-color: $theme-secondary-color;
+    }
+}
+
+// popular routes css
+.popular-routes {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+
+    .flightLine {
+        position: relative;
+        width: 100%;
+        height: 1px;
+        background-color: $theme-accent-three;
+
+        >* {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 9px;
+            height: 9px;
+            border: 1px solid $theme-accent-three;
+            border-radius: 100%;
+        }
+    }
+
+    .flightLine>:first-child {
+        left: 0;
+        background-color: $theme-accent-three
+    }
+
+    .flightLine>:nth-child(2) {
+        right: 0;
+        background-color: $theme-accent-three
+    }
+}

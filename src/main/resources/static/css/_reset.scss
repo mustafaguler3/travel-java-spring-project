@@ -1,0 +1,38 @@
+* {
+
+    outline: none;
+
+}
+
+html,
+body,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: $theme-link-color;
+}
+
+a:hover,
+a:active,
+a:focus {
+    transition: all ease-in-out 0.3s;
+    color: $theme-primary-color;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background: $theme-secondary-color;
+}
+
+.form-control:focus {
+    color: $theme-secondary-color;
+    background-color: $theme-color-white;
+    border-color: $theme-link-color;
+    outline: 0;
+    box-shadow: none;
+}
