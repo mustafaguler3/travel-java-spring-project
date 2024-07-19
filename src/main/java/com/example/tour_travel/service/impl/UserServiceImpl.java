@@ -1,6 +1,6 @@
 package com.example.tour_travel.service.impl;
 
-import com.example.tour_travel.UserDto;
+import com.example.tour_travel.dto.UserDto;
 import com.example.tour_travel.entity.Role;
 import com.example.tour_travel.entity.User;
 import com.example.tour_travel.repository.RoleRepository;
@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {

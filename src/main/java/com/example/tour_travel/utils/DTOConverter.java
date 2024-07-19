@@ -1,6 +1,6 @@
 package com.example.tour_travel.utils;
 
-import com.example.tour_travel.UserDto;
+import com.example.tour_travel.dto.UserDto;
 import com.example.tour_travel.entity.User;
 import org.springframework.stereotype.Component;
 

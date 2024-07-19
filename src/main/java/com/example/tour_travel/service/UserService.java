@@ -1,7 +1,6 @@
 package com.example.tour_travel.service;
 
-import com.example.tour_travel.UserDto;
-import com.example.tour_travel.entity.User;
+import com.example.tour_travel.dto.UserDto;
 
 import java.util.List;
 

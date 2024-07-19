@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+
+<header th:insert="fragments/header :: header"></header>
+
+<main>
+    <div layout:fragment="mainContent"></div>
+</main>
+
+<footer th:insert="fragments/footer :: footer"></footer>
+
+<!-- js file -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    // Scroll Top
+    $(document).ready(function () {
+        var ScrollTop = $(".scrollToTop");
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() < 500) {
+                ScrollTop.removeClass("active");
+            } else {
+                ScrollTop.addClass("active");
+            }
+        });
+        $('.scrollToTop').on('click', function () {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 500);
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
