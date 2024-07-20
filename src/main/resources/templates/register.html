@@ -70,7 +70,7 @@ button:hover {
 
     <main>
     <h1>Register Page</h1>
-    <form th:action="@{/register}" method="post" th:object="${user}">
+    <form th:action="@{/register}" method="post" th:object="${user}" enctype="multipart/form-data">
         <div class="input-group">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>
@@ -91,6 +91,13 @@ button:hover {
             <input type="text" id="username" name="username" th:field="*{username}" required>
             <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
         </div>
+
+        <div class="input-group">
+            <label for="username">Picture</label>
+            <input type="text" id="picture" name="username" th:field="*{username}" required>
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </div>
+
         <div class="input-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" th:field="*{password}" required>

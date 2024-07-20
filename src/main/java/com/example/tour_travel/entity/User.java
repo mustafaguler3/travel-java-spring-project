@@ -4,6 +4,7 @@ import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,8 +24,11 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private boolean isEnabled;
     private String password;
     private String confirmPassword;
+
+    private String profilePicture;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",

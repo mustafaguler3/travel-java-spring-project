@@ -32,6 +32,18 @@ public class AuthController {
         model.addAttribute("user",new UserDto());
         return "register";
     }
+    /*
+
+    @GetMapping("/uploads/{fileType}/{filename:.+}")
+    public ResponseEntity<Resource> getImage(@PathVariable String filename,
+                                             @PathVariable String fileType) {
+
+        Resource file = fileStorageService.loadFile(filename,fileType);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+     */
 
     @PostMapping("/register")
     public String registerPost(@Valid @ModelAttribute("user") UserDto userDto,
