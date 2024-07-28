@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Search Results</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <style>
+        /* Dropdown style */
+.dropdown-menu {
+    padding: 10px;
+    width: 100%;
+}
+
+.input-group-button button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group-field {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Search Results</h2>
+            <div class="row" th:if="${#lists.isEmpty(hotels)}">
+                <div class="col-md-12">
+                    <p>No hotels found for the selected criteria.</p>
+                </div>
+            </div>
+            <div class="row" th:if="${not #lists.isEmpty(hotels)}">
+                <div class="col-md-4" th:each="hotel : ${hotels}">
+                    <div class="card mb-4">
+                        <img th:src="@{/uploads/hotels/{fileName}(fileName=${hotel.imageUrl})}" class="card-img-top" alt="Hotel Image">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${hotel.name}">Hotel Name</h5>
+                            <p class="card-text">
+                                <span th:text="'Location: ' + ${hotel.city} + ', ' + ${hotel.country}"></span><br>
+                                <span th:text="'Price per night: $' + ${hotel.pricePerNight}"></span><br>
+                                <span th:text="'Description: ' + ${hotel.description}"></span>
+                            </p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.querySelectorAll('.input-group-button button').forEach(button => {
+    button.addEventListener('click', function() {
+        const fieldName = this.getAttribute('data-field');
+        const parent = this.parentNode.parentNode;
+        const input = parent.querySelector(`input[name="${fieldName}"]`);
+        let currentValue = parseInt(input.value, 10);
+
+        if (isNaN(currentValue)) {
+            currentValue = 0;
+        }
+
+        if (this.getAttribute('data-quantity') === 'plus') {
+            input.value = currentValue + 1;
+        } else if (this.getAttribute('data-quantity') === 'minus') {
+            if (currentValue > 0) {
+                input.value = currentValue - 1;
+            } else {
+                input.value = 0;
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

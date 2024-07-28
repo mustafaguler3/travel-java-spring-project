@@ -16,9 +16,8 @@ public class DTOConverter {
         user.setUsername(userDto.getUsername());
         user.setFirstName(userDto.getFirstName());
 
-        MultipartFile multipartFile = userDto.getProfilePicture();
 
-        user.setProfilePicture();
+        user.setProfilePicture(userDto.getProfilePictureUrl());
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
@@ -28,6 +27,9 @@ public class DTOConverter {
     public UserDto toDto(User user){
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
+
+        userDto.setProfilePictureUrl(user.getProfilePicture());
+        //userDto.setProfilePicture(user.getProfilePicture());
         userDto.setEnabled(user.isEnabled());
         userDto.setUsername(user.getUsername());
         userDto.setFirstName(user.getFirstName());

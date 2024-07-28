@@ -9,11 +9,8 @@ import java.util.List;
 
 @Entity
 @Data
-public class HotelBooking {
+public class HotelBooking extends Booking{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -24,6 +21,10 @@ public class HotelBooking {
 
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
+    private int numberOfRooms;
+    private int numberOfAdults;
+    private int numberOfChildren;
+
     private BookingStatus status;
 
     @OneToMany(mappedBy = "hotelBooking")

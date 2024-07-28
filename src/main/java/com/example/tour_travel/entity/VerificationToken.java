@@ -1,8 +1,6 @@
 package com.example.tour_travel.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -12,10 +10,11 @@ import java.util.Date;
 @Entity
 @Data
 public class VerificationToken {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String token;
-    @OneToOne(mappedBy = "verificationToken")
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
     private Date expiryDate;

@@ -8,10 +8,13 @@ import com.example.tour_travel.repository.RoleRepository;
 import com.example.tour_travel.repository.UserRepository;
 import com.example.tour_travel.repository.VerificationTokenRepository;
 import com.example.tour_travel.service.EmailService;
+import com.example.tour_travel.service.FileStorageService;
 import com.example.tour_travel.service.UserService;
 import com.example.tour_travel.utils.DTOConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Collections;
 import java.util.Date;
@@ -31,21 +34,27 @@ public class UserServiceImpl implements UserService {
     private VerificationTokenRepository verificationTokenRepository;
     @Autowired
     private EmailService emailService;
+    @Autowired
+    private FileStorageService fileStorageService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void createUser(UserDto userDto) {
         User user = new User();
         user.setEmail(userDto.getEmail());
         user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setConfirmPassword(passwordEncoder.encode(userDto.getConfirmPassword()));
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
+        user.setEnabled(false);
 
-        if (findByUsername(user.getUsername()) != null){
+        if (findByUsername(userDto.getUsername()) != null){
             throw new RuntimeException("Username already taken");
         }
 
-        if (findByEmail(user.getEmail()) != null){
+        if (findByEmail(userDto.getEmail()) != null){
             throw new RuntimeException("Email already taken");
         }
 
@@ -58,18 +67,28 @@ public class UserServiceImpl implements UserService {
         }
         user.setRoles(Collections.singleton(role));
 
+        MultipartFile profilePicture = userDto.getProfilePicture();
+
+        if (profilePicture != null && !profilePicture.isEmpty()){
+            try {
+                String fileName = fileStorageService.storeFile(profilePicture,"users");
+                user.setProfilePicture(fileName);
+            }catch (Exception e){
+                e.printStackTrace();
+                throw new RuntimeException("Failed to upload profile picture");
+            }
+        }
+
         userRepository.save(user);
 
         String token = UUID.randomUUID().toString();
         VerificationToken verificationToken = new VerificationToken();
         verificationToken.setToken(token);
         verificationToken.setUser(user);
-        verificationToken.setExpiryDate(new Date(System.currentTimeMillis() + 24 * 60 * 60* 60));
+        verificationToken.setExpiryDate(new Date(System.currentTimeMillis() + 24 * 60 * 60* 1000));
         verificationTokenRepository.save(verificationToken);
 
-
         emailService.sendVerificationEmail(user,token);
-
     }
 
     @Override
@@ -77,7 +96,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(username);
 
         if (user == null){
-            throw new RuntimeException("User not found");
+            return null;
         }
 
         return dtoConverter.toDto(user);
@@ -88,7 +107,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email);
 
         if (user == null){
-            throw new RuntimeException("Email not found");
+            return null;
         }
 
         return dtoConverter.toDto(user);
@@ -102,4 +121,45 @@ public class UserServiceImpl implements UserService {
 
         return result;
     }
+
+    @Override
+    public boolean verifyUser(String token) {
+        VerificationToken verificationToken = verificationTokenRepository.findByToken(token);
+        if (verificationToken != null){
+            User user = verificationToken.getUser();
+            user.setEnabled(true);
+            userRepository.save(user);
+            verificationTokenRepository.delete(verificationToken);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkPassword(String password, String encodedPassword) {
+        return passwordEncoder.matches(password,encodedPassword);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

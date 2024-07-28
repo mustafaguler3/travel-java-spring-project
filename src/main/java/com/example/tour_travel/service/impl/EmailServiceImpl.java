@@ -30,7 +30,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void sendVerificationEmail(User user, String token) {
 
-        String subject = "Tour Travel - Verify your email address";
+        String subject = "Adventure - Verify your email address";
         String confirmationLink = "http://localhost:8080/verify?token=" +token;
         String recipient = user.getEmail();
 
@@ -53,6 +53,7 @@ public class EmailServiceImpl implements EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
             Context context = new Context();
             context.setVariables(model);
+            context.setVariable("logoUrl","http://localhost:8080/images/log.png");
             String htmlContent = templateEngine.process(templateName,context);
             helper.setTo(to);
             helper.setSubject(subject);

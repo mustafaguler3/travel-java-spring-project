@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorate="~{layout.html}">
+      layout:decorate="~{layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -82,19 +83,29 @@ button:hover {
     </style>
 </head>
 <body layout:fragment="mainContent">
-
 <main>
+
+
     <h1>Login Page</h1>
-    <form>
+    <form th:action="@{/login}" th:object="${user}" method="post">
         <div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+            <label for="username">Email</label>
+            <input type="text" id="username" name="username" th:field="*{username}" required>
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" th:field="*{password}" required>
         </div>
         <button type="submit">Login</button>
+        <div th:if="${param.error}">
+            <p>Invalid username or password</p>
+        </div>
+        <div th:if="${param.logout}">
+            <p>You have been logged out.</p>
+        </div>
+        <div th:if="${errorMsg}">
+            <h1 th:text="${errorMsg}"></h1>
+        </div>
     </form>
 </main>
 

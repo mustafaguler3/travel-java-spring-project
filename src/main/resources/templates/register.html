@@ -64,8 +64,8 @@ button:hover {
 </head>
 <body layout:fragment="mainContent">
 
-    <div th:if="${success}">
-        <p th:text="${success}"></p>
+    <div th:if="${param.success}">
+        <p th:text="${param.success}"></p>
     </div>
 
     <main>
@@ -93,9 +93,9 @@ button:hover {
         </div>
 
         <div class="input-group">
-            <label for="username">Picture</label>
-            <input type="text" id="picture" name="username" th:field="*{username}" required>
-            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            <label for="profilePicture">Picture</label>
+            <input type="file" id="profilePicture" name="profilePicture" th:field="*{profilePicture}" required>
+            <div th:if="${#fields.hasErrors('profilePicture')}" th:errors="*{profilePicture}"></div>
         </div>
 
         <div class="input-group">

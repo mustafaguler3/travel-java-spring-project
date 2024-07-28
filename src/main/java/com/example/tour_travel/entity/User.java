@@ -28,6 +28,9 @@ public class User {
     private String password;
     private String confirmPassword;
 
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private VerificationToken verificationToken;
+
     private String profilePicture;
 
     @ManyToMany(fetch = FetchType.EAGER)

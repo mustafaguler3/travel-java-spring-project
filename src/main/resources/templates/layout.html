@@ -5,11 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
 
-<header th:insert="fragments/header :: header"></header>
+<header th:insert="fragments/header :: header(currentUser=${currentUser})"></header>
 
 <main>
     <div layout:fragment="mainContent"></div>
@@ -18,7 +18,7 @@
 <footer th:insert="fragments/footer :: footer"></footer>
 
 <!-- js file -->
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     // Scroll Top

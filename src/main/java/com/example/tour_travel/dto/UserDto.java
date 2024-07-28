@@ -3,6 +3,8 @@ package com.example.tour_travel.dto;
 import com.example.tour_travel.entity.Role;
 import jakarta.persistence.Transient;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
@@ -11,7 +13,8 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 public class UserDto {
 
     private Long id;
@@ -38,4 +41,9 @@ public class UserDto {
     @Transient
     @NotBlank(message = "Confirm password is mandatory")
     private String confirmPassword;
+
+    public UserDto() {
+    }
+
+
 }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  layout:decorate="~{layout.html}">
+  <head>
+    <title>Adventure</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!--<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet"> -->
+	  <link rel="stylesheet" th:href="@{/css/main.css}">
+	  <style>
+		  .card-img-top {
+              height: 200px;
+              object-fit: cover;
+          }
+          .star-rating {
+              color: #ffc107;
+          }
+          .amenities {
+              list-style: none;
+              padding: 0;
+          }
+          .amenities li {
+              display: inline;
+              margin-right: 10px;
+          }
+		  .card-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+	  </style>
+  </head>
+  <body layout:fragment="mainContent">
+
+
+  <div class="container mt-5">
+	  <div class="row">
+		  <div th:if="${errorMsg}" class="col-12">
+			  <div class="alert alert-warning" th:text="${errorMsg}"></div>
+		  </div>
+	  </div>
+	  <div class="row">
+		  <div class="col-12" th:if="${hotels}">
+			  <div class="row">
+				  <div class="col-md-4 mb-4" th:each="hotel : ${hotels}">
+					  <div class="card h-100 card-hover">
+
+						  <div class="badge badge-sm badge-primary text-white position-absolute"
+							   style="top: 0.5rem; left:0.5rem"
+							   th:text="'$' + ${hotel.pricePerNight} + '/night'">$0/night</div>
+
+						  <img th:src="@{/uploads/hotels/{fileName}(fileName=${hotel.imageUrl})}"
+							   class="card-img-top" alt="Hotel image">
+						  <div class="card-body">
+							  <h5 class="card-title" th:text="${hotel.name}"></h5>
+							  <p class="card-text" th:text="${hotel.description}"></p>
+							  <div class="d-flex justify-content-between align-items-center">
+								  <span class="text-muted" th:text="${hotel.city}">City</span>
+							  </div>
+							  <div class="mt-2">
+                                    <span class="star-rating">
+                                        <i class="icon-star" th:each="i : ${#numbers.sequence(1, hotel.rating)}"></i>
+                                        <i class="icon-star-o" th:each="i : ${#numbers.sequence(hotel.rating + 1, 5)}"></i>
+                                    </span>
+								  <span class="text-muted" th:text="'(' + ${hotel.rating} + ' rating)'">(0 rating)</span>
+							  </div>
+							  <ul class="amenities mt-3">
+								  <li><i class="icon-wifi"></i> Free Wi-Fi</li>
+								  <li><i class="icon-parking"></i> Free Parking</li>
+								  <li><i class="icon-pool"></i> Pool</li>
+								  <!-- Add more amenities as needed -->
+							  </ul>
+						  </div>
+						  <div class="card-footer text-right">
+							  <a href="#" class="btn btn-primary">Book Now</a>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+
+
+		  <div class="d-flex justify-content-center">
+			  <nav aria-label="Page navigation example">
+				  <ul class="pagination">
+					  <li class="page-item" th:if="${currentPage > 0}">
+						  <a class="page-link" th:href="@{/hotels(page=${currentPage - 1})}">Previous</a>
+					  </li>
+					  <li class="page-item" th:each="i : ${#numbers.sequence(0,totalPages - 1)}">
+						  <a class="page-link" th:href="@{/hotels(page=${i})}"
+							 th:text="${i + 1}"
+							 th:classappend="${i == currentPage} ? 'active' : ''"></a>
+					  </li>
+					  <li class="page-item" th:if="${currentPage < totalPages - 1}">
+						  <a class="page-link" th:href="@{/hotels(page=${currentPage + 1})}">Next</a>
+					  </li>
+				  </ul>
+			  </nav>
+		  </div>
+	  </div>
+  </div>
+
+
+    
+  </body>
+</html>

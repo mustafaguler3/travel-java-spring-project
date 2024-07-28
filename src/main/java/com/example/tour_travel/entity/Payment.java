@@ -15,7 +15,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "booking_id")
-    private Booking booking;
+    private FlightBooking booking;
 
     private double amount;
     private LocalDateTime paymentDate;

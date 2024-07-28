@@ -24,7 +24,7 @@ public class Flight {
     private double price;
 
     @OneToMany(mappedBy = "flight")
-    private List<Booking> bookings;
+    private List<FlightBooking> bookings;
 
 }
 

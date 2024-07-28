@@ -9,4 +9,7 @@ public interface UserService {
     UserDto findByUsername(String username);
     UserDto findByEmail(String email);
     List<UserDto> getUsers();
+    boolean verifyUser(String token);
+
+    boolean checkPassword(String password, String encodedPassword);
 }
